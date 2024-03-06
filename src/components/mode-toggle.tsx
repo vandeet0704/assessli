@@ -1,7 +1,11 @@
+// Client side component to toggle between light and dark mode using next-themes
+
 "use client"
 
 import * as React from "react"
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons"
+
+// Next.js theme hook
 import { useTheme } from "next-themes"
 
 import { Button } from "@/components/ui/button"

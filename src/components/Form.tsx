@@ -1,11 +1,14 @@
 "use client"
 
+// Modules for Form Handling and Validation
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+
 import { cn } from "@/lib/utils"
 import * as React from "react"
-import {useState} from 'react';
+
+// Modules for UI Components from ShadCN
 import { Icons } from "@/components/icons"
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "./ui/checkbox";
@@ -38,6 +41,7 @@ import {
 } from "@/components/ui/select"
 import { Textarea } from "./ui/textarea"
 
+// Define a schema for form validation.
 const formSchema = z.object({
     firstname: z.string()
         .min(2, {
@@ -70,16 +74,20 @@ const formSchema = z.object({
     }),
 })
 
+// Define the props for the form.
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {}
 
+// Define the ContactForm component.
 export function ContactForm({ className, ...props }: CardProps) {
 
+    //Define a state for loading.
     const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
     //Define a submit handler.
     const onSubmit = async(values: z.infer<typeof formSchema>) => {
         setIsLoading(true)
 
+        //Fetch the SheetsDB API and submit the form data.
         fetch('https://sheetdb.io/api/v1/tx10gd0prktp3', {
             method: 'POST',
             headers: {
@@ -100,7 +108,7 @@ export function ContactForm({ className, ...props }: CardProps) {
             })
         })
         .then((response) => response.json())
-        .then( () => toast("Message Submitted", {
+        .then( () => toast("Message Submitted", { //Show a toast message on successful submission.
                 description: "Sit tight, we will get back to you soon.",
                 action: {
                   label: "Done",
@@ -110,9 +118,8 @@ export function ContactForm({ className, ...props }: CardProps) {
                 },
               })
         );
-
-        console.log(values)
         
+        //Simulate a loading state for 3 seconds.
         setTimeout(() => {
             setIsLoading(false);
         }, 3000)
@@ -133,6 +140,7 @@ export function ContactForm({ className, ...props }: CardProps) {
     })
     
 
+    //Render the form inside a Card component.
     return (
         <Card className={cn("sm:w-[80vw] md:w-[70vw] lg:w-[60vw]", className)} {...props}>
             <CardContent>

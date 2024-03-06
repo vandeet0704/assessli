@@ -1,8 +1,14 @@
+// NavMenu component. Responsive for all screen sizes.
+
+// Theme toggle component.
 import { ModeToggle } from "./mode-toggle";
+
+// Hambuger menu icon from radix-ui.
+import { HamburgerMenuIcon } from "@radix-ui/react-icons"
+
+// UI components from ShadCN.
 import { Button } from "./ui/button";
 import { Label } from "./ui/label";
-import Image from "next/image";
-import { HamburgerMenuIcon } from "@radix-ui/react-icons"
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem } from "./ui/dropdown-menu";
 
 export function NavMenu() {
