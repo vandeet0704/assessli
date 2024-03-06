@@ -88,7 +88,7 @@ export function ContactForm({ className, ...props }: CardProps) {
         setIsLoading(true)
 
         //Fetch the SheetsDB API and submit the form data.
-        fetch('https://sheetdb.io/api/v1/tx10gd0prktp3', {
+        fetch('<YOUR_API_KEY>', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
